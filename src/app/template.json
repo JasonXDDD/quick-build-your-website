@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Full Width Pics",
+    "src": "assets/template/full-width-pics/index.html",
+    "route": "full-width-pics"
+  },
+  {
+    "name": "Full Slider",
+    "src": "assets/template/full-slider/index.html",
+    "route": "full-slider"
+  },
+  {
+    "name": "Big Pics",
+    "src": "assets/template/big-picture/index.html",
+    "route": "big-pics"
+  }
+]

@@ -1,0 +1,18 @@
+<div>
+  <section class="pricing-section bg-1">
+    <h2 class="pricing-section__title">選擇，點選你要修改的網頁</h2>
+    <div class="row fn-list">
+      <div class="col-sm-4"><a [routerLink]="['/addPage']"><span class="fa-4x glyphicon glyphicon-plus" aria-hidden="true"></span></a></div>
+      <div class="col-sm-4"><a href=""><span class="fa-4x glyphicon glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></a></div>
+      <div class="col-sm-4"><a href=""><span class="fa-4x glyphicon glyphicon-remove" aria-hidden="true"></span></a></div>
+    </div>
+    <pre>{{ pageList | json }}</pre>
+
+
+
+    <div class="pricing pricing--sonam">
+        <app-page-item *ngFor="let page of pageList" [page]="page"></app-page-item>
+    </div>
+  </section>
+</div>
+<!-- /container -->

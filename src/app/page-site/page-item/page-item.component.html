@@ -1,0 +1,13 @@
+<div class="pricing__item">
+  <h3 class="pricing__title">{{ page.title }}</h3>
+  <div class="pricing__price">
+    <img src="assets/img/seo-36-512.png" height="200px">
+  </div>
+  <p class="pricing__sentence">{{ page.template.name }}</p>
+  <ul class="pricing__feature-list">
+    <li class="pricing__feature">模組: 最新消息</li>
+    <li class="pricing__feature">模組: 背景</li>
+    <li class="pricing__feature">模組: 導覽列(上)</li>
+  </ul>
+  <a class="pricing__action" [routerLink]="['/setting/' + page.template.route]">設定</a>
+</div>

@@ -1,0 +1,51 @@
+<div class="container">
+  <div id="slideshow" class="slideshow">
+    <ul>
+      <li>
+        <div class="slide">
+          <img class="icon" src="assets/img/icons/browser.svg" alt="Browser Icon" />
+          <h1>為新增的頁面給個名稱吧:</h1>
+          <span class="input input--hoshi">
+							<input class="input__field input__field--hoshi" type="text" id="input-4" [(ngModel)]="page.title"/>
+							<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+								<span class="input__label-content input__label-content--hoshi">Name</span>
+          </label>
+          </span>
+
+          <pre>{{ page | json }}</pre>
+        </div>
+      </li>
+      <li>
+        <div class="slide">
+          <img class="icon" src="assets/img/icons/heart.svg" alt="Heart Icon" />
+          <h1>選擇你的樣板:</h1>
+          <div>
+            <a (click)="page.template=temp" style="padding: 0 2em;" *ngFor="let temp of templateList">{{ temp.name }}</a>
+
+          </div>
+          <pre>{{ page | json }}</pre>
+        </div>
+      </li>
+      <li>
+        <div class="slide">
+          <img class="icon" src="assets/img/icons/letter.svg" alt="Letter Icon" />
+          <h1>給個漂亮的風格吧:</h1>
+
+
+          <pre>{{ page | json }}</pre>
+        </div>
+      </li>
+      <li>
+        <div class="slide">
+          <img class="icon" src="assets/img/icons/football.svg" alt="Football Icon" />
+          <h1>恭喜你!!，完成你的網頁設定</h1>
+          <h1>可以到設定進行網頁內容編輯喔XD</h1>
+
+          <a (click)="sendNewPage()">go back</a>
+          <pre>{{ page | json }}</pre>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- /container -->
