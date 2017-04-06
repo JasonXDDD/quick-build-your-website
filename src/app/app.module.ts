@@ -8,7 +8,8 @@ import { AppComponent } from './app.component';
 import { PageSiteComponent } from './page-site/page-site.component';
 import { AddNewPageComponent } from './add-new-page/add-new-page.component';
 import { PageItemComponent } from './page-site/page-item/page-item.component';
-import { BigPicsComponent } from './setTemplate/big-pics/big-pics.component';
+import { SetTemplateComponent } from './set-template/set-template.component';
+import { BigPicsComponent } from './set-template/big-pics/big-pics.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,8 @@ import { BigPicsComponent } from './setTemplate/big-pics/big-pics.component';
     PageSiteComponent,
     AddNewPageComponent,
     PageItemComponent,
+    BigPicsComponent,
+    SetTemplateComponent,
     BigPicsComponent
   ],
   imports: [

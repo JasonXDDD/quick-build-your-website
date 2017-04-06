@@ -1,0 +1,52 @@
+
+.pricing-section {
+	min-height: 100vh;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+.pricing-section {
+	padding: 2em 0 8em;
+	min-height: 100vh;
+	position: relative;
+}
+
+.pricing-section__title {
+	font-size: 3em;
+	font-weight: 500;
+	margin: 1em 0 1em;
+	flex: none;
+}
+
+.pricing-section a {
+	color: #333;
+}
+
+.pricing-section a:hover,
+.pricing-section a:focus {
+	color: #000;
+}
+
+.bg-1 {
+	background: #ffded7;
+	background-size: cover;
+	color: #111;
+}
+
+/*************
+*	功能選擇
+****************/
+
+.fn-list span{
+	color: #555
+}
+
+.fn-list a :hover{
+	color: cyan;
+}

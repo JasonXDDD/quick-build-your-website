@@ -14,4 +14,8 @@ export class PageItemComponent implements OnInit {
   ngOnInit() {
   }
 
+  doSettingPage(){
+    localStorage.setItem('pageSetting', JSON.stringify(this.page));
+  }
+
 }

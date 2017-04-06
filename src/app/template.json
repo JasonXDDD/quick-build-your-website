@@ -1,17 +1,23 @@
-[
-  {
-    "name": "Full Width Pics",
-    "src": "assets/template/full-width-pics/index.html",
-    "route": "full-width-pics"
-  },
-  {
-    "name": "Full Slider",
-    "src": "assets/template/full-slider/index.html",
-    "route": "full-slider"
-  },
-  {
-    "name": "Big Pics",
-    "src": "assets/template/big-picture/index.html",
-    "route": "big-pics"
+[{
+  "name": "Full Width Pics",
+  "src": "assets/template/full-width-pics/index.html",
+  "route": "fullWidthPics"
+}, {
+  "name": "Full Slider",
+  "src": "assets/template/full-slider/index.html",
+  "route": "fullSlider"
+}, {
+  "name": "Big Pics",
+  "src": "assets/template/big-picture/index.html",
+  "route": "bigPics",
+  "module": {
+    "title": "這是標題",
+    "content": "我說了一些話，會顯示在這裡，藍受，香菇，在這裡。",
+    "background": "http://placehold.it/1920x1080",
+    "navList": [
+      { "name": "連結", "link": "/setting/big-pics" },
+      { "name": "鏈結2", "link": "/setting/big-pics" },
+      { "name": "臉節", "link": "/setting/big-pics" }
+    ]
   }
-]
+}]

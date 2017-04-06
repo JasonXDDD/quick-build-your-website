@@ -9,5 +9,5 @@
     <li class="pricing__feature">模組: 背景</li>
     <li class="pricing__feature">模組: 導覽列(上)</li>
   </ul>
-  <a class="pricing__action" [routerLink]="['/setting/' + page.template.route]">設定</a>
+  <a class="pricing__action" (click)="doSettingPage()" [routerLink]="['/setting/' + page.template.route]">設定</a>
 </div>
