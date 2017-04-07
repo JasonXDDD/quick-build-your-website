@@ -13,11 +13,15 @@
     }
   }, {
     "name": "Full Slider",
-    "route": "/setting/bigPics",
+    "route": "/setting/fullSlider",
     "module": {
       "title": "this is titile",
       "content": "I want to say sonething, but I don't know what I do",
-      "background": "http://placehold.it/1920x1080",
+      "slide": [
+        { "src": "http://placehold.it/1920x1080", "content": "XDDD" },
+        { "src": "http://placehold.it/1900x1080&text=Slide", "content": "132" },
+        { "src": "http://placehold.it/1900x1080&text=XDDDDD", "content": "546" }
+      ],
       "navList": [
         { "name": "連結", "link": "/setting/big-pics"},
         { "name": "鏈結2", "link": "/setting/big-pics"},

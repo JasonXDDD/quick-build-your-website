@@ -9,19 +9,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-      <a class="navbar-brand" href="#">Start Bootstrap</a>
+      <a class="navbar-brand" href="#">{{ page.template.module.title }}</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li>
-          <a href="#">About</a>
-        </li>
-        <li>
-          <a href="#">Services</a>
-        </li>
-        <li>
-          <a href="#">Contact</a>
+        <li *ngFor="let item of navList">
+          <a href="{{item.link}}">{{ item.name }}</a>
         </li>
       </ul>
     </div>
@@ -33,31 +27,17 @@
 <header id="myCarousel" class="carousel slide">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel"
+      *ngFor="let item of slide; let first=first; let i=index"
+      [attr.data-slide-to]="i" [ngClass]="{active: first}"></li>
   </ol>
   <!-- Wrapper for Slides -->
   <div class="carousel-inner">
-    <div class="item active">
+    <div class="item" [ngClass]="{active: first}" *ngFor="let item of slide; let first=first">
       <!-- Set the first background image using inline CSS below. -->
-      <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
+      <div class="fill" [ngStyle]="{'backgroundImage': 'url(' + item.src + ')'}"></div>
       <div class="carousel-caption">
-        <h2>Caption 1</h2>
-      </div>
-    </div>
-    <div class="item">
-      <!-- Set the second background image using inline CSS below. -->
-      <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
-      <div class="carousel-caption">
-        <h2>Caption 2</h2>
-      </div>
-    </div>
-    <div class="item">
-      <!-- Set the third background image using inline CSS below. -->
-      <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
-      <div class="carousel-caption">
-        <h2>Caption 3</h2>
+        <h2>{{ item.content }}</h2>
       </div>
     </div>
   </div>
@@ -69,13 +49,13 @@
     <span class="icon-next"></span>
   </a>
 </header>
+
 <!-- Page Content -->
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1>Full Slider by Start Bootstrap</h1>
-      <p>The background images for the slider are set directly in the HTML using inline CSS. The rest of the styles for this
-        template are contained within the <code>full-slider.css</code>file.</p>
+      <h1>{{ page.template.module.title }}</h1>
+      <p>{{ page.template.module.content }}</p>
     </div>
   </div>
   <hr>
@@ -91,6 +71,89 @@
 </div>
 <!-- /.container -->
 
- <script>
+<!--Control Nav-->
+<div class="control-nav">
+  <div>
+    <h2 class="control-title">標題</h2>
+    <span class="input input--hoshi">
+      <input class="input__field input__field--hoshi" type="text" [(ngModel)]="page.template.module.title"/>
+      <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+        <span class="input__label-content input__label-content--hoshi">Title</span>
+    </label>
+    </span>
+  </div>
+  <hr>
 
-    </script>
+  <div>
+    <h2 class="control-title">內文</h2>
+    <span class="input input--hoshi">
+      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="page.template.module.content"/>
+      <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+        <span class="input__label-content input__label-content--hoshi">Content</span>
+    </label>
+    </span>
+  </div>
+  <hr>
+
+
+  <div style="margin: 50px 0;">
+    <h2 class="control-title">導覽列
+      <a (click)="pushNav()">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      </a>
+    </h2>
+    <div style="height: 90px;" *ngFor="let item of navList; let i=index">
+      <a class="control-btn-delete" (click)="deleteData(i, navList)">
+        <span class="glyphicon glyphicon-minus fa-2x"></span>
+      </a>
+
+      <span class="input input--hoshi" style="width: 100px;">
+      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="item.name"/>
+      <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+        <span class="input__label-content input__label-content--hoshi">Name</span>
+      </label>
+      </span>
+      <span class="input input--hoshi" style="width: 250px;">
+      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="item.link"/>
+      <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+        <span class="input__label-content input__label-content--hoshi">Link</span>
+      </label>
+      </span>
+    </div>
+  </div>
+  <hr>
+
+  <div style="margin: 50px 0;">
+    <h2 class="control-title">循環背景
+      <a (click)="pushSlide()">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      </a>
+    </h2>
+
+    <div style="height: 90px;" *ngFor="let item of slide; let i=index">
+      <a class="control-btn-delete" (click)="deleteData(i, slide)">
+        <span class="glyphicon glyphicon-minus fa-2x"></span>
+      </a>
+
+      <span class="input input--hoshi" style="width: 250px;">
+      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="item.src"/>
+      <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+        <span class="input__label-content input__label-content--hoshi">Src</span>
+      </label>
+      </span>
+      <span class="input input--hoshi" style="width: 100px;">
+      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="item.content"/>
+      <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+        <span class="input__label-content input__label-content--hoshi">Content</span>
+      </label>
+      </span>
+
+    </div>
+  </div>
+  <hr>
+  <pre>{{ page | json }}</pre>
+
+  <a (onclick)="doSettingPage()" [routerLink]="['/pages']">
+    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+  </a>
+</div>

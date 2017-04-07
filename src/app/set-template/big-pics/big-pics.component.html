@@ -38,43 +38,71 @@
     <!-- /.container -->
   </div>
 </div>
+
+<!--Control Nav-->
 <div class="control-nav">
-  <span class="input input--hoshi">
-    <input class="input__field input__field--hoshi" type="text" [(ngModel)]="page.template.module.title"/>
-    <label class="input__label input__label--hoshi input__label--hoshi-color-1">
-      <span class="input__label-content input__label-content--hoshi">Title</span>
-  </label>
-  </span>
-  <span class="input input--hoshi">
-    <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="page.template.module.content"/>
-    <label class="input__label input__label--hoshi input__label--hoshi-color-1">
-      <span class="input__label-content input__label-content--hoshi">Content</span>
-  </label>
-  </span>
-  <span class="input input--hoshi">
-    <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="page.template.module.background"/>
-    <label class="input__label input__label--hoshi input__label--hoshi-color-1">
-      <span class="input__label-content input__label-content--hoshi">Background</span>
-  </label>
-  </span>
-
-
-  <div style="height: 90px;" *ngFor="let item of page.template.module.navList">
-    <span class="input input--hoshi" style="width: 100px;">
-    <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="item.name"/>
-    <label class="input__label input__label--hoshi input__label--hoshi-color-1">
-      <span class="input__label-content input__label-content--hoshi">Name</span>
-    </label>
-    </span>
-    <span class="input input--hoshi" style="width: 300px;">
-    <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="item.link"/>
-    <label class="input__label input__label--hoshi input__label--hoshi-color-1">
-      <span class="input__label-content input__label-content--hoshi">Link</span>
-    </label>
+  <div>
+    <h2 class="control-title">標題</h2>
+    <span class="input input--hoshi">
+      <input class="input__field input__field--hoshi" type="text" [(ngModel)]="page.template.module.title"/>
+      <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+        <span class="input__label-content input__label-content--hoshi">Title</span>
+      </label>
     </span>
   </div>
-
   <hr>
+
+  <div>
+    <h2 class="control-title">內文</h2>
+    <span class="input input--hoshi">
+      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="page.template.module.content"/>
+      <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+        <span class="input__label-content input__label-content--hoshi">Content</span>
+      </label>
+    </span>
+  </div>
+  <hr>
+
+  <div>
+    <h2 class="control-title">背景</h2>
+    <span class="input input--hoshi">
+      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="page.template.module.background"/>
+      <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+        <span class="input__label-content input__label-content--hoshi">Background</span>
+      </label>
+    </span>
+  </div>
+  <hr>
+
+
+  <div style="margin: 50px 0;">
+    <h2 class="control-title">導覽列
+      <a (click)="pushNav()">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      </a>
+    </h2>
+
+    <div style="height: 90px;" *ngFor="let item of navList; let i=index">
+      <a class="control-btn-delete" (click)="deleteData(i, navList)">
+        <span class="glyphicon glyphicon-minus fa-2x"></span>
+      </a>
+      <span class="input input--hoshi" style="width: 100px;">
+      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="item.name"/>
+      <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+        <span class="input__label-content input__label-content--hoshi">Name</span>
+      </label>
+      </span>
+      <span class="input input--hoshi" style="width: 250px;">
+      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="item.link"/>
+      <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+        <span class="input__label-content input__label-content--hoshi">Link</span>
+      </label>
+      </span>
+    </div>
+  </div>
+  <hr>
+
+
   <pre>{{ page | json }}</pre>
 
   <a (onclick)="doSettingPage()" [routerLink]="['/pages']"> OK </a>

@@ -1,5 +1,5 @@
 export function sliderFxInit () {
-  new SliderFx(document.getElementById('slideshow'), {
+  new SliderFx(document.getElementById('xd-slideshow'), {
     easing: 'cubic-bezier(.8,0,.2,1)'
   });
 };
