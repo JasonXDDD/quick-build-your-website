@@ -15,7 +15,7 @@ export class PageItemComponent implements OnInit {
   }
 
   doSettingPage(){
-    localStorage.setItem('pageSetting', JSON.stringify(this.page));
+    sessionStorage.setItem('pageSetting', JSON.stringify(this.page));
   }
 
 }

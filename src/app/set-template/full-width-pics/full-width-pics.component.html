@@ -1,0 +1,172 @@
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+      <a class="navbar-brand" href="#">Start Bootstrap</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="#">About</a>
+        </li>
+        <li>
+          <a href="#">Services</a>
+        </li>
+        <li>
+          <a href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+
+<!-- Full Width Image Header with Logo -->
+<!-- Image backgrounds are set within the full-width-pics.css file. -->
+<header class="image-bg-fluid-height">
+  <img class="img-responsive img-center" src="http://placehold.it/200x200&text=Logo" alt="">
+</header>
+
+<!-- Content Section -->
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="section-heading">Section Heading</h1>
+        <p class="lead section-lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <p class="section-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto
+          commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Fixed Height Image Aside -->
+<!-- Image backgrounds are set within the full-width-pics.css file. -->
+<aside class="image-bg-fixed-height"></aside>
+
+<!-- Content Section -->
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="section-heading">Section Heading</h1>
+        <p class="lead section-lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <p class="section-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto
+          commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
+      </div>
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container -->
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <p>Copyright &copy; Your Website 2014</p>
+      </div>
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container -->
+</footer>
+
+
+<!--Control Nav-->
+<div class="control-nav">
+  <div>
+    <h2 class="control-title">標題</h2>
+    <span class="input input--hoshi">
+      <input class="input__field input__field--hoshi" type="text" [(ngModel)]="page.template.module.title"/>
+      <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+        <span class="input__label-content input__label-content--hoshi">Title</span>
+    </label>
+    </span>
+  </div>
+  <hr>
+
+  <div>
+    <h2 class="control-title">內文</h2>
+    <span class="input input--hoshi">
+      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="page.template.module.content"/>
+      <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+        <span class="input__label-content input__label-content--hoshi">Content</span>
+    </label>
+    </span>
+  </div>
+  <hr>
+
+
+  <div style="margin: 50px 0;">
+    <h2 class="control-title">導覽列
+      <a (click)="pushNav()">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      </a>
+    </h2>
+    <div style="height: 90px;" *ngFor="let item of navList; let i=index">
+      <a class="control-btn-delete" (click)="deleteData(i, navList)">
+        <span class="glyphicon glyphicon-minus fa-2x"></span>
+      </a>
+
+      <span class="input input--hoshi" style="width: 100px;">
+      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="item.name"/>
+      <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+        <span class="input__label-content input__label-content--hoshi">Name</span>
+      </label>
+      </span>
+      <span class="input input--hoshi" style="width: 250px;">
+      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="item.link"/>
+      <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+        <span class="input__label-content input__label-content--hoshi">Link</span>
+      </label>
+      </span>
+    </div>
+  </div>
+  <hr>
+
+  <div style="margin: 50px 0;">
+    <h2 class="control-title">循環背景
+      <a (click)="pushSlide()">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      </a>
+    </h2>
+
+    <div style="height: 90px;" *ngFor="let item of slide; let i=index">
+      <a class="control-btn-delete" (click)="deleteData(i, slide)">
+        <span class="glyphicon glyphicon-minus fa-2x"></span>
+      </a>
+
+      <span class="input input--hoshi" style="width: 250px;">
+      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="item.src"/>
+      <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+        <span class="input__label-content input__label-content--hoshi">Src</span>
+      </label>
+      </span>
+      <span class="input input--hoshi" style="width: 100px;">
+      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="item.content"/>
+      <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+        <span class="input__label-content input__label-content--hoshi">Content</span>
+      </label>
+      </span>
+
+    </div>
+  </div>
+  <hr>
+  <pre>{{ page | json }}</pre>
+
+  <a (onclick)="doSettingPage()" [routerLink]="['/pages']">
+    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+  </a>
+</div>

@@ -11,6 +11,8 @@ import { PageItemComponent } from './page-site/page-item/page-item.component';
 import { SetTemplateComponent } from './set-template/set-template.component';
 import { BigPicsComponent } from './set-template/big-pics/big-pics.component';
 import { FullSliderComponent } from './set-template/full-slider/full-slider.component';
+import { FullWidthPicsComponent } from './set-template/full-width-pics/full-width-pics.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { FullSliderComponent } from './set-template/full-slider/full-slider.comp
     BigPicsComponent,
     SetTemplateComponent,
     BigPicsComponent,
-    FullSliderComponent
+    FullSliderComponent,
+    FullWidthPicsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

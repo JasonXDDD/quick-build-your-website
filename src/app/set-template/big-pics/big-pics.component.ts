@@ -12,12 +12,12 @@ export class BigPicsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.page = JSON.parse(localStorage.getItem('pageSetting'));
+    this.page = JSON.parse(sessionStorage.getItem('pageSetting'));
     this.navList = this.page.template.module.navList;
   }
 
   doSettingPage(){
-    localStorage.setItem('pageSetting', JSON.stringify(this.page));
+    sessionStorage.setItem('pageSetting', JSON.stringify(this.page));
   }
 
   pushNav(){

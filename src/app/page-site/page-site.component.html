@@ -1,5 +1,7 @@
 <div>
   <section class="pricing-section bg-1">
+    <marquee class="user_name"></marquee>
+
     <h2 class="pricing-section__title">選擇，點選你要修改的網頁</h2>
     <div class="row fn-list">
       <div class="col-sm-4"><a [routerLink]="['/addPage']"><span class="fa-4x glyphicon glyphicon-plus" aria-hidden="true"></span></a></div>
@@ -8,10 +10,12 @@
     </div>
 
 
-
     <div class="pricing pricing--sonam">
         <app-page-item *ngFor="let page of pageList" [page]="page"></app-page-item>
     </div>
+
+    <pre>{{ pageList | json }}</pre>
+
   </section>
 </div>
 <!-- /container -->

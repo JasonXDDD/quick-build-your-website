@@ -20,7 +20,7 @@ export class FullSliderComponent implements OnInit {
         interval: 5000 //changes the speed
     })
 
-    this.page = JSON.parse(localStorage.getItem('pageSetting'));
+    this.page = JSON.parse(sessionStorage.getItem('pageSetting'));
     this.slide = this.page.template.module.slide;
     this.navList = this.page.template.module.navList;
   }

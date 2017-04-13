@@ -1,46 +1,54 @@
 [{
     "name": "Big Pics",
     "route": "/setting/bigPics",
-    "module": {
-      "title": "this is titile",
-      "content": "I want to say sonething, but I don't know what I do",
-      "background": "http://placehold.it/1920x1080",
-      "navList": [
+    "module": [
+      {"key": "title", "value": "這是標題"},
+      {"key": "content", "value": "你可以在這邊打些文字，這是顯示的內容，簡單有清楚的說明一些關於這頁的涵義，這就是這塊內容的目的"},
+      {"key": "background", "value": "http://placehold.it/1920x1080"},
+      {"navList": "title", "value": [
         { "name": "連結", "link": "/setting/big-pics"},
         { "name": "鏈結2", "link": "/setting/big-pics"},
         { "name": "臉節", "link": "/setting/big-pics"}
-      ]
-    }
+      ]}
+    ]
   }, {
     "name": "Full Slider",
     "route": "/setting/fullSlider",
-    "module": {
-      "title": "this is titile",
-      "content": "I want to say sonething, but I don't know what I do",
-      "slide": [
+    "module": [
+      {"key": "title", "value": "這是標題"},
+      {"key": "content", "value": "你可以在這邊打些文字，這是顯示的內容，簡單有清楚的說明一些關於這頁的涵義，這就是這塊內容的目的"},
+      {"key": "slide", "value": [
         { "src": "http://placehold.it/1920x1080", "content": "XDDD" },
         { "src": "http://placehold.it/1900x1080&text=Slide", "content": "132" },
         { "src": "http://placehold.it/1900x1080&text=XDDDDD", "content": "546" }
-      ],
-      "navList": [
+      ]},
+      {"key": "navList", "value": [
         { "name": "連結", "link": "/setting/big-pics"},
         { "name": "鏈結2", "link": "/setting/big-pics"},
         { "name": "臉節", "link": "/setting/big-pics"}
-      ]
-    }
+      ]}
+    ]
   }, {
     "name": "Full Width Pics",
-    "route": "/setting/bigPics",
-    "module": {
-      "title": "this is titile",
-      "content": "I want to say sonething, but I don't know what I do",
-      "background": "http://placehold.it/1920x1080",
-      "navList": [
+    "route": "/setting/fullWidthPics",
+    "module": [
+      {"key": "title", "value": "這是標題"},
+      {"key": "content", "value": "你可以在這邊打些文字，這是顯示的內容，簡單有清楚的說明一些關於這頁的涵義，這就是這塊內容的目的"},
+      {"key": "background", "value": "http://placehold.it/1920x1080"},
+      {"key": "logo", "value": "http://placehold.it/1920x1080"},
+      {"key": "navList", "value": [
         { "name": "連結", "link": "/setting/big-pics"},
         { "name": "鏈結2", "link": "/setting/big-pics"},
         { "name": "臉節", "link": "/setting/big-pics"}
-      ]
-    }
+      ]},
+      {"key": "section", "value": [
+        {"type": "text", "heading": "Section Heading", "lead": "string", "paragraph": "string"},
+        {"type": "image", "src": "string"},
+        {"type": "text", "heading": "Section Heading", "lead": "string", "paragraph": "string"},
+        {"type": "text", "heading": "Section Heading", "lead": "string", "paragraph": "string"},
+        {"type": "image", "src": "string"}
+      ]}
+    ]
   }
 
 ]

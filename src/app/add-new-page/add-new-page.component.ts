@@ -1,3 +1,4 @@
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Component, OnInit } from '@angular/core';
 import { slideInit, sliderFxInit } from './init';
 import { Router } from '@angular/router';
@@ -10,18 +11,24 @@ import { Router } from '@angular/router';
 export class AddNewPageComponent implements OnInit {
   page: any;
   templateList: any;
+  user: any;
 
 
-  constructor(private router: Router) {
-    this.page = {
-      title: "",
-      template: "",
-      style: ""
-    }
-    this.templateList = JSON.parse(localStorage.getItem('templateList'));
+  constructor(private router: Router, private http: Http) {
+
   }
 
   ngOnInit() {
+    this.user = JSON.parse(sessionStorage.getItem('user'));
+    this.templateList = JSON.parse(sessionStorage.getItem('templateList'));
+
+    this.page = {
+      user_id: this.user.data.user_id,
+      page_title: "",
+      template: "",
+      page_style: ""
+    }
+
     // init
     slideInit();
     sliderFxInit();
@@ -30,12 +37,17 @@ export class AddNewPageComponent implements OnInit {
   }
 
   sendNewPage() {
-    // console.log(JSON.stringify(this.page));
-    let pageList = JSON.parse(localStorage.getItem('pageList'));
-    pageList.push(this.page);
+    let headers = new Headers({
+      'Authorization': this.user.token,
+      'Content-Type': 'application/json'
+    });
+    let options = new RequestOptions({ headers: headers });
+    this.http.post('http://huangserver.ddns.net:3031/pages', JSON.stringify(this.page), options)
+      .subscribe(result =>{
+        console.log(result);
+        this.router.navigate(['/pages']);
+      })
 
-    localStorage.setItem('pageList', JSON.stringify(pageList));
-    this.router.navigate(['/pages']);
   }
 
 }
