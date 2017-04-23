@@ -1,32 +1,70 @@
-<div class="pen-title">
-  <h1>Login</h1>
+<div class="carousel slide bg" data-ride="carousel">
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="assets/img/blackboard.jpg" width="100%">
+    </div>
+
+    <div class="item">
+      <img src="assets/img/blackboard.jpg" width="100%">
+    </div>
+
+    <div class="item">
+      <img src="assets/img/blackboard.jpg" width="100%">
+    </div>
+
+    <div class="item">
+      <img src="assets/img/blackboard.jpg" width="100%">
+    </div>
+  </div>
+
 </div>
 
+<div class="bg bg-webview"></div>
+
+<div class="pen-title">
+  <h1>Quick Build Your WebSite</h1>
+</div>
 
 <div class="container">
   <div class="card"></div>
   <div class="card">
     <h1 class="title">Login</h1>
-    <!--<form>-->
+    <form ngForm>
     <!-- login user information -->
+
     <div class="input-container">
-      <input type="text" id="Username" required="required" [(ngModel)]="user.email"/>
-      <label for="Username">Username</label>
+      <input type="text" #userEmail="ngModel" required name="email" [(ngModel)]="user.email"
+      pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"/>
+      <label for="Email">Email</label>
       <div class="bar"></div>
     </div>
+    <div class="errors-container">
+      <div class="errors" *ngIf="userEmail.errors">
+        <p *ngIf="userEmail.errors.required">required</p>
+        <p *ngIf="userEmail.errors.pattern">pattern</p>
+      </div>
+    </div>
+
+
     <div class="input-container">
-      <input type="password" id="Password" required="required" [(ngModel)]="user.password"/>
+      <input type="password" #userPwd="ngModel" required minlength="6" name="password" [(ngModel)]="user.password"/>
       <label for="Password">Password</label>
       <div class="bar"></div>
+    </div>
+    <div class="errors-container">
+      <div class="errors" *ngIf="userPwd.errors">
+        <p *ngIf="userPwd.errors.required">required</p>
+        <p *ngIf="userPwd.errors.minlength">minlength</p>
+      </div>
     </div>
 
     <div class="button-container">
       <button (click)="loginUser()"><span>Go</span></button>
     </div>
 
-
-    <div class="footer"><a href="#">Forgot your password?</a></div>
-    <!--</form>-->
+    <!--<div class="footer"><a href="#">Forgot your password?</a></div>-->
+    </form>
   </div>
 
 
@@ -40,27 +78,41 @@
     <h1 class="title">Register
       <div class="close"></div>
     </h1>
-    <!--<form>-->
+    <form ngForm>
     <!-- register user information -->
     <div class="input-container">
-      <input type="text" id="NewName" required="required" [(ngModel)]="user.email"/>
-      <label for="Username">Username</label>
+      <input type="text" #userEmail="ngModel" required name="email" [(ngModel)]="user.email"
+      pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"/>
+      <label for="Email">Email</label>
       <div class="bar"></div>
     </div>
+    <div class="errors-container">
+      <div class="errors-alt" *ngIf="userEmail.errors">
+        <p *ngIf="userEmail.errors.required">required</p>
+        <p *ngIf="userEmail.errors.pattern">pattern</p>
+      </div>
+    </div>
+
+
     <div class="input-container">
-      <input type="password" id="NewPassword" required="required" [(ngModel)]="user.password"/>
+      <input type="password" #userPwd="ngModel" required minlength="6" name="password" [(ngModel)]="user.password"/>
       <label for="Password">Password</label>
       <div class="bar"></div>
     </div>
-    <div class="input-container">
-      <input type="password" id="Repeat Password" required="required" />
-      <label for="Repeat Password">Repeat Password</label>
-      <div class="bar"></div>
+    <div class="errors-container">
+      <div class="errors-alt" *ngIf="userPwd.errors">
+        <p *ngIf="userPwd.errors.required">required</p>
+        <p *ngIf="userPwd.errors.minlength">minlength</p>
+      </div>
     </div>
+
+
     <div class="button-container">
       <button (click)="createUser()"><span>Next</span></button>
     </div>
-    <!--</form>-->
+
+
+    </form>
   </div>
 </div>
 

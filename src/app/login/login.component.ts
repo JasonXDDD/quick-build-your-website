@@ -1,13 +1,16 @@
+import { EqualValidator } from './../equal-validator.directive';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Component, OnInit } from '@angular/core';
-
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
+
 export class LoginComponent implements OnInit {
   user: any;
 
@@ -33,16 +36,6 @@ export class LoginComponent implements OnInit {
       $('.container').stop().removeClass('active');
     });
 
-
-    $('#portfolio').on('click', function () {
-      // body...
-      alert("Don't hack me !!");
-    });
-
-    $('#codepen').on('click', function () {
-      // body...
-      alert("Go back to MainPage~~");
-    });
   }
 
   loginUser(){

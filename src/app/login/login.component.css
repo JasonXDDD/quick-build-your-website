@@ -1,15 +1,38 @@
-body {
-  background: #e9e9e9;
-  color: #666666;
-  font-family: 'RobotoDraft', 'Roboto', sans-serif;
-  font-size: 14px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Background */
+
+.bg {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: -1;
 }
+
+.bg-webview {
+  background: url('/assets/img/bg.png') no-repeat center center fixed;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+
+.errors-container {
+  margin: 0 60px 50px;
+}
+
+.errors-container .errors {
+  color: red;
+}
+.errors-container .errors-alt {
+  position: absolute;
+  color: white;
+}
+
+
+
 
 /* Pen Title */
 .pen-title {
-  padding: 50px 0;
+  padding: 120px 0;
   text-align: center;
   letter-spacing: 2px;
 }
@@ -72,7 +95,7 @@ body {
   position: relative;
   max-width: 460px;
   width: 100%;
-  margin: 0 auto 100px;
+  margin: 0 auto 50px;
 }
 .container.active .card:first-child {
   background: #f2f2f2;
@@ -109,6 +132,7 @@ body {
 }
 .container.active .card.alt .title,
 .container.active .card.alt .input-container,
+.container.active .card.alt .errors-container,
 .container.active .card.alt .button-container {
   left: 0;
   opacity: 1;
@@ -133,6 +157,10 @@ body {
           transition-delay: .6s;
 }
 .container.active .card.alt .button-container {
+  -webkit-transition-delay: .7s;
+          transition-delay: .7s;
+}
+.container.active .card.alt .errors-container {
   -webkit-transition-delay: .7s;
           transition-delay: .7s;
 }
@@ -173,7 +201,7 @@ body {
 }
 .card .input-container {
   position: relative;
-  margin: 0 60px 50px;
+  margin: 0 60px;
 }
 .card .input-container input {
   outline: none;
@@ -351,6 +379,7 @@ body {
 }
 .card.alt .title,
 .card.alt .input-container,
+.card.alt .errors-container,
 .card.alt .button-container {
   left: 100px;
   opacity: 0;

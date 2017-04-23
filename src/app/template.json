@@ -5,7 +5,7 @@
       {"key": "title", "value": "這是標題"},
       {"key": "content", "value": "你可以在這邊打些文字，這是顯示的內容，簡單有清楚的說明一些關於這頁的涵義，這就是這塊內容的目的"},
       {"key": "background", "value": "http://placehold.it/1920x1080"},
-      {"navList": "title", "value": [
+      {"key": "navList", "value": [
         { "name": "連結", "link": "/setting/big-pics"},
         { "name": "鏈結2", "link": "/setting/big-pics"},
         { "name": "臉節", "link": "/setting/big-pics"}

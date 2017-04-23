@@ -14,6 +14,7 @@ import { FullSliderComponent } from './set-template/full-slider/full-slider.comp
 import { FullWidthPicsComponent } from './set-template/full-width-pics/full-width-pics.component';
 import { LoginComponent } from './login/login.component';
 
+import { EqualValidator } from './equal-validator.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { LoginComponent } from './login/login.component';
     BigPicsComponent,
     FullSliderComponent,
     FullWidthPicsComponent,
-    LoginComponent
+    LoginComponent,
+    EqualValidator
   ],
   imports: [
     BrowserModule,
