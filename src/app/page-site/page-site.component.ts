@@ -21,7 +21,7 @@ export class PageSiteComponent implements OnInit {
     this.user = sessionStorage.getItem('user');
 
     if(this.user === null){
-      // this.router.navigate(['/login']);
+      this.router.navigate(['/login']);
     }
     else{
       this.user = JSON.parse(this.user);

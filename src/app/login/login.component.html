@@ -1,31 +1,24 @@
 <div class="carousel slide bg" data-ride="carousel">
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
-    <div class="item active">
+    <div class="item active animated fadeIn">
       <img src="assets/img/blackboard.jpg" width="100%">
     </div>
 
-    <div class="item">
-      <img src="assets/img/blackboard.jpg" width="100%">
+    <div class="item animated fadeIn">
+      <img src="assets/img/main/1.jpg" width="100%">
     </div>
 
-    <div class="item">
-      <img src="assets/img/blackboard.jpg" width="100%">
-    </div>
-
-    <div class="item">
-      <img src="assets/img/blackboard.jpg" width="100%">
+    <div class="item animated fadeIn">
+      <img src="assets/img/main/2.jpg" width="100%">
     </div>
   </div>
 
 </div>
 
-<div class="bg bg-webview"></div>
+<div class="bg bg-webview wow bounceInUp"></div>
 
-<div class="pen-title">
-  <h1>Quick Build Your WebSite</h1>
-</div>
-
+<div class="space"></div>
 <div class="container">
   <div class="card"></div>
   <div class="card">
@@ -60,7 +53,7 @@
     </div>
 
     <div class="button-container">
-      <button (click)="loginUser()"><span>Go</span></button>
+      <button (click)="loginUser(userPwd, userEmail)"><span>Go</span></button>
     </div>
 
     <!--<div class="footer"><a href="#">Forgot your password?</a></div>-->
@@ -108,7 +101,7 @@
 
 
     <div class="button-container">
-      <button (click)="createUser()"><span>Next</span></button>
+      <button (click)="createUser(userPwd, userEmail)"><span>Next</span></button>
     </div>
 
 

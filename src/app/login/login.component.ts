@@ -38,30 +38,42 @@ export class LoginComponent implements OnInit {
 
   }
 
-  loginUser(){
+  loginUser(pwd, email){
+    if(pwd.invalid || email.invalid) return;
+
     console.log(JSON.stringify(this.user));
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
     this.http.post('http://huangserver.ddns.net:3031/auth/local', JSON.stringify(this.user), options)
-      .subscribe(result => {
-        console.log(result.json());
-        sessionStorage.setItem("user", JSON.stringify(result.json()));
-        this.router.navigate(['/pages']);
-      })
+      .subscribe(
+        result => {
+          sessionStorage.setItem("user", JSON.stringify(result.json()));
+          this.router.navigate(['/dashboard']);
+        },
+        result => {
+          alert("Email 或是 password 錯誤");
+        })
   }
 
-  createUser() {
+  createUser(pwd, email) {
+    if(pwd.invalid || email.invalid) return;
+
+
     console.log(JSON.stringify(this.user));
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
 
     this.http.post('http://huangserver.ddns.net:3031/users', JSON.stringify(this.user), options)
-      .subscribe(result => {
-        if(result.status < 300){
-          location.reload();
-        }
-      })
+      .subscribe(
+        result => {
+          if(result.status < 300){
+            location.reload();
+          }
+        },
+        result => {
+          alert("此email已經註冊過了")
+        })
   }
 }

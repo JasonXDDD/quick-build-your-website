@@ -1,3 +1,10 @@
+@font-face {
+	font-family: 'Brush Script Std';
+	src:url('/assets/fonts/font/BrushScriptStd.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
 /* Background */
 
 .bg {
@@ -28,7 +35,9 @@
 }
 
 
-
+.space {
+  height: 320px;
+}
 
 /* Pen Title */
 .pen-title {

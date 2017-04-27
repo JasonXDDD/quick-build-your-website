@@ -1,13 +1,14 @@
-<div class="pricing__item">
+<div class="pricing__item wow bounceInUp">
   <h3 class="pricing__title">{{ page.page_title }}</h3>
   <div class="pricing__price">
-    <img src="assets/img/seo-36-512.png" height="200px">
+    <img [src]="'/assets/img/template/' + page.template.name + '.png'" height="200px">
   </div>
   <p class="pricing__sentence">{{ page.template.name }}</p>
   <ul class="pricing__feature-list">
-    <li class="pricing__feature">模組: 最新消息</li>
-    <li class="pricing__feature">模組: 背景</li>
-    <li class="pricing__feature">模組: 導覽列(上)</li>
+    <li class="pricing__feature glyphicon"
+    [ngClass]="{'glyphicon-ok set-ok': item.isSet, 'glyphicon-remove set-no': !item.isSet}"
+    *ngFor="let item of page.template.module">模組: {{ item.key }}
+    </li>
   </ul>
-  <a class="pricing__action" (click)="doSettingPage()" [routerLink]="[page.template.route]">設定</a>
+  <a class="pricing__action" (click)="doSettingPage()">設定</a>
 </div>

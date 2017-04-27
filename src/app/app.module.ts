@@ -15,6 +15,10 @@ import { FullWidthPicsComponent } from './set-template/full-width-pics/full-widt
 import { LoginComponent } from './login/login.component';
 
 import { EqualValidator } from './equal-validator.directive';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ViewComponent } from './dashboard/view/view.component';
+import { ProjectComponent } from './dashboard/project/project.component';
+import { ProfileComponent } from './dashboard/profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +31,11 @@ import { EqualValidator } from './equal-validator.directive';
     FullSliderComponent,
     FullWidthPicsComponent,
     LoginComponent,
-    EqualValidator
+    EqualValidator,
+    DashboardComponent,
+    ViewComponent,
+    ProjectComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

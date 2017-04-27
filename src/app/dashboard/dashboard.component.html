@@ -1,0 +1,40 @@
+<div class="sidebar" data-background-color="black" data-active-color="success">
+
+  <!--
+		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+	-->
+
+  <div class="sidebar-wrapper">
+    <div class="logo">
+      <a href="#" class="simple-text">
+                    JasonXDDD
+                </a>
+    </div>
+
+    <ul class="nav">
+      <li class="active">
+        <a [routerLink]="['/dashboard/view']" (click)="doActive($event)">
+          <i class="ti-panel"></i>
+          <p>總覽</p>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/dashboard/project']" (click)="doActive($event)">
+          <i class="ti-user"></i>
+          <p>專案</p>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/dashboard/profile']" (click)="doActive($event)">
+          <i class="ti-view-list-alt"></i>
+          <p>個人檔案</p>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>

@@ -1,4 +1,4 @@
-<div class="full" [ngStyle]="{background: 'url(' + page.template.module.background + ') no-repeat center center fixed'}">
+<div class="full" [ngStyle]="{background: 'url(' + background.value + ') no-repeat center center fixed'}">
   <div class="show">
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
@@ -11,12 +11,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-          <a class="navbar-brand" href="#">{{ page.template.module.title }}</a>
+          <a class="navbar-brand" href="#">{{ title.value }}</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li *ngFor="let item of page.template.module.navList">
+            <li *ngFor="let item of navList.value">
               <a href="{{item.link}}">{{ item.name }}</a>
             </li>
           </ul>
@@ -29,8 +29,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-sm-12">
-          <h1>{{ page.template.module.title }}</h1>
-          <p>{{ page.template.module.content }}</p>
+          <h1>{{ title.value }}</h1>
+          <p>{{ content.value }}</p>
         </div>
       </div>
       <!-- /.row -->
@@ -44,7 +44,7 @@
   <div>
     <h2 class="control-title">標題</h2>
     <span class="input input--hoshi">
-      <input class="input__field input__field--hoshi" type="text" [(ngModel)]="page.template.module.title"/>
+      <input class="input__field input__field--hoshi" type="text" [(ngModel)]="title.value"/>
       <label class="input__label input__label--hoshi input__label--hoshi-color-1">
         <span class="input__label-content input__label-content--hoshi">Title</span>
       </label>
@@ -55,7 +55,7 @@
   <div>
     <h2 class="control-title">內文</h2>
     <span class="input input--hoshi">
-      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="page.template.module.content"/>
+      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="content.value"/>
       <label class="input__label input__label--hoshi input__label--hoshi-color-1">
         <span class="input__label-content input__label-content--hoshi">Content</span>
       </label>
@@ -66,7 +66,7 @@
   <div>
     <h2 class="control-title">背景</h2>
     <span class="input input--hoshi">
-      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="page.template.module.background"/>
+      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="background.value"/>
       <label class="input__label input__label--hoshi input__label--hoshi-color-1">
         <span class="input__label-content input__label-content--hoshi">Background</span>
       </label>
@@ -82,7 +82,7 @@
       </a>
     </h2>
 
-    <div style="height: 90px;" *ngFor="let item of navList; let i=index">
+    <div style="height: 90px;" *ngFor="let item of navList.value; let i=index">
       <a class="control-btn-delete" (click)="deleteData(i, navList)">
         <span class="glyphicon glyphicon-minus fa-2x"></span>
       </a>

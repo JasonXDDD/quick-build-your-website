@@ -1,3 +1,7 @@
+import { ProfileComponent } from './dashboard/profile/profile.component';
+import { ProjectComponent } from './dashboard/project/project.component';
+import { ViewComponent } from './dashboard/view/view.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { FullWidthPicsComponent } from './set-template/full-width-pics/full-width-pics.component';
 import { FullSliderComponent } from './set-template/full-slider/full-slider.component';
@@ -11,6 +15,12 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   { path:'', pathMatch:'full', redirectTo:'/login'},
   { path: 'login', component: LoginComponent},
+  { path: 'dashboard', component: DashboardComponent, children: [
+    { path: '', pathMatch: 'full', redirectTo: '/dashboard/view'},
+    { path: 'view', component: ViewComponent},
+    { path: 'project', component: ProjectComponent},
+    { path: 'profile', component: ProfileComponent},
+  ]},
   { path: 'pages', component: PageSiteComponent},
   { path: 'addPage', component: AddNewPageComponent},
   { path: 'setting', component: SetTemplateComponent, children: [
