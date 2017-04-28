@@ -11,6 +11,7 @@ export class PageSiteComponent implements OnInit {
 
   pageList = [];
   user: any;
+  project: any;
 
 
   constructor(private router: Router, private route: ActivatedRoute, private http: Http) {
@@ -19,6 +20,7 @@ export class PageSiteComponent implements OnInit {
   ngOnInit() {
     // this.pageList = JSON.parse(sessionStorage.getItem('pageList'));
     this.user = sessionStorage.getItem('user');
+    this.project = JSON.parse(sessionStorage.getItem('projectSetting'));
 
     if(this.user === null){
       this.router.navigate(['/login']);
@@ -39,8 +41,7 @@ export class PageSiteComponent implements OnInit {
     });
     let options = new RequestOptions({ headers: headers });
 
-
-    this.http.get('http://huangserver.ddns.net:3031/pages?user_id=' + this.user.data.user_id, options)
+    this.http.get('http://huangserver.ddns.net:3031/pages?project_id=' + this.project.project_id, options)
       .subscribe(result =>{
         console.log(result.json());
         this.pageList = result.json();

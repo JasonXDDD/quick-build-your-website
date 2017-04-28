@@ -19,6 +19,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ViewComponent } from './dashboard/view/view.component';
 import { ProjectComponent } from './dashboard/project/project.component';
 import { ProfileComponent } from './dashboard/profile/profile.component';
+import { ProjectItemComponent } from './dashboard/project/project-item/project-item.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,8 @@ import { ProfileComponent } from './dashboard/profile/profile.component';
     DashboardComponent,
     ViewComponent,
     ProjectComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProjectItemComponent
   ],
   imports: [
     BrowserModule,

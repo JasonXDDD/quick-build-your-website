@@ -12,6 +12,7 @@ export class AddNewPageComponent implements OnInit {
   page: any;
   templateList: any;
   user: any;
+  project: any;
 
 
   constructor(private router: Router, private http: Http) {
@@ -20,10 +21,11 @@ export class AddNewPageComponent implements OnInit {
 
   ngOnInit() {
     this.user = JSON.parse(sessionStorage.getItem('user'));
+    this.project = JSON.parse(sessionStorage.getItem('projectSetting'));
     this.templateList = JSON.parse(sessionStorage.getItem('templateList'));
 
     this.page = {
-      user_id: this.user.data.user_id,
+      project_id: this.project.project_id,
       page_title: "",
       template: "",
       page_style: ""
@@ -44,7 +46,6 @@ export class AddNewPageComponent implements OnInit {
     let options = new RequestOptions({ headers: headers });
     this.http.post('http://huangserver.ddns.net:3031/pages', JSON.stringify(this.page), options)
       .subscribe(result =>{
-        console.log(result);
         this.router.navigate(['/pages']);
       })
 

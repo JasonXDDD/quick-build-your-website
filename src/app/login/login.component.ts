@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
     this.http.post('http://huangserver.ddns.net:3031/auth/local', JSON.stringify(this.user), options)
       .subscribe(
         result => {
+          console.log(result.json())
           sessionStorage.setItem("user", JSON.stringify(result.json()));
           this.router.navigate(['/dashboard']);
         },

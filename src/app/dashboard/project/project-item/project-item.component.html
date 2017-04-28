@@ -1,0 +1,33 @@
+<div class="col-lg-3 col-md-4">
+  <div class="card card-user">
+    <div class="image">
+      <img src="{{ project.background }}"/>
+    </div>
+    <div class="content" style="min-height: 150px;">
+      <div class="author">
+        <div style="height:70px;"></div>
+        <h4 class="title">{{ project.name }}<br />
+        </h4>
+      </div>
+      <p class="description text-center">
+        {{ project.description }}
+      </p>
+
+      <a class="btn btn-info btn-fill btn-wd" style="display: block; margin: 20px 50px 0;" (click)="doSettingProject()">設定網頁</a>
+    </div>
+    <hr>
+    <div class="text-center">
+      <div class="row">
+        <div class="col-md-3 col-md-offset-1">
+          <h5>{{ project.pages }}<br /><small>Pages</small></h5>
+        </div>
+        <div class="col-md-4">
+          <h5>{{ project.used }} MB<br /><small>Used</small></h5>
+        </div>
+        <div class="col-md-3">
+          <h5>{{ project.views }}<br /><small>Views</small></h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
