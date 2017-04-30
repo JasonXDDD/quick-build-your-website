@@ -14,13 +14,8 @@
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="ti-panel"></i>
-              <p>Stats</p>
-            </a>
-          </li>
-          <li class="dropdown">
+
+          <!--<li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="ti-bell"></i>
               <p class="notification">5</p>
@@ -34,6 +29,18 @@
               <li><a href="#">Notification 4</a></li>
               <li><a href="#">Another notification</a></li>
             </ul>
+          </li>-->
+          <li>
+            <a href="#" data-toggle="modal" data-target="#myModal">
+              <i class="ti-plus"></i>
+              <p>Create</p>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="ti-close"></i>
+              <p>Remove</p>
+            </a>
           </li>
           <li>
             <a href="#">
@@ -42,10 +49,10 @@
             </a>
           </li>
         </ul>
-
       </div>
     </div>
   </nav>
+
 
 
   <div class="content">
@@ -61,15 +68,8 @@
     <div class="container-fluid">
       <nav class="pull-left">
         <ul>
-
-          <li>
-
-          </li>
           <li>
             <a href="http://blog.creative-tim.com">Blog</a>
-          </li>
-          <li>
-
           </li>
         </ul>
       </nav>
@@ -82,4 +82,49 @@
       </div>
     </div>
   </footer>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form ngForm>
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">新增專案</h4>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="project_name">專案名稱</label>
+            <input type="email" class="form-control" name="project_name" required #addProjectName="ngModel" [(ngModel)]="addProject.name">
+            <div class="errors-container">
+              <div class="errors-alt" *ngIf="addProjectName.errors">
+                <p *ngIf="addProjectName.errors.required">required</p>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="project_description">專案描述</label>
+            <textarea class="form-control" rows="3" name="project_description" #addProjectDesciption="ngModel" [(ngModel)]="addProject.description"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="project_cover">專案封面 (url)</label>
+            <!--<input type="file" id="exampleInputFile">
+            <p class="help-block">Example block-level help text here.</p>-->
+            <input type="url" class="form-control" name="project_cover" #addProjectCover="ngModel" [(ngModel)]="addProject.background">
+            <img [src]="addProject.background" width="200px" alt="">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" (click)="doAddProject(addProjectName)">Submit</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
 </div>

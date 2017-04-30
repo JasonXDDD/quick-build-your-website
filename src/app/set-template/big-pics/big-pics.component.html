@@ -42,9 +42,10 @@
 <!--Control Nav-->
 <div class="control-nav">
   <div>
-    <h2 class="control-title">標題</h2>
+    <h2 class="control-title glyphicon"
+    [ngClass]="{'glyphicon-ok set-ok': title.isSet, 'glyphicon-remove set-no': !title.isSet}">標題</h2>
     <span class="input input--hoshi">
-      <input class="input__field input__field--hoshi" type="text" [(ngModel)]="title.value"/>
+      <input class="input__field input__field--hoshi" type="text" [(ngModel)]="title.value" (keyup)="checkIsChanged(title)"/>
       <label class="input__label input__label--hoshi input__label--hoshi-color-1">
         <span class="input__label-content input__label-content--hoshi">Title</span>
       </label>
@@ -53,10 +54,11 @@
   <hr>
 
   <div>
-    <h2 class="control-title">內文</h2>
+    <h2 class="control-title glyphicon"
+    [ngClass]="{'glyphicon-ok set-ok': content.isSet, 'glyphicon-remove set-no': !content.isSet}">內文</h2>
     <span class="input input--hoshi">
-      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="content.value"/>
-      <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+      <textarea class="input__field input__field--hoshi textarea__field" [(ngModel)]="content.value" (keyup)="checkIsChanged(content)"></textarea>
+      <label class="input__label input__label--hoshi input__label--hoshi-color-1 textarea__label">
         <span class="input__label-content input__label-content--hoshi">Content</span>
       </label>
     </span>
@@ -64,9 +66,10 @@
   <hr>
 
   <div>
-    <h2 class="control-title">背景</h2>
+    <h2 class="control-title glyphicon"
+    [ngClass]="{'glyphicon-ok set-ok': background.isSet, 'glyphicon-remove set-no': !background.isSet}">背景</h2>
     <span class="input input--hoshi">
-      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="background.value"/>
+      <input class="input__field input__field--hoshi" type="text" [(ngModel)]="background.value" (keyup)="checkIsChanged(background)"/>
       <label class="input__label input__label--hoshi input__label--hoshi-color-1">
         <span class="input__label-content input__label-content--hoshi">Background</span>
       </label>
@@ -76,24 +79,25 @@
 
 
   <div style="margin: 50px 0;">
-    <h2 class="control-title">導覽列
+    <h2 class="control-title glyphicon"
+    [ngClass]="{'glyphicon-ok set-ok': navList.isSet, 'glyphicon-remove set-no': !navList.isSet}">導覽列
       <a (click)="pushNav()">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
       </a>
     </h2>
 
     <div style="height: 90px;" *ngFor="let item of navList.value; let i=index">
-      <a class="control-btn-delete" (click)="deleteData(i, navList)">
+      <a class="control-btn-delete" (click)="deleteData(i, navList.value)">
         <span class="glyphicon glyphicon-minus fa-2x"></span>
       </a>
       <span class="input input--hoshi" style="width: 100px;">
-      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="item.name"/>
+      <input class="input__field input__field--hoshi" type="text" [(ngModel)]="item.name" (keyup)="checkIsChanged(navList)"/>
       <label class="input__label input__label--hoshi input__label--hoshi-color-1">
         <span class="input__label-content input__label-content--hoshi">Name</span>
       </label>
       </span>
       <span class="input input--hoshi" style="width: 250px;">
-      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="item.link"/>
+      <input class="input__field input__field--hoshi" type="text" [(ngModel)]="item.link" (keyup)="checkIsChanged(navList)"/>
       <label class="input__label input__label--hoshi input__label--hoshi-color-1">
         <span class="input__label-content input__label-content--hoshi">Link</span>
       </label>
@@ -102,8 +106,5 @@
   </div>
   <hr>
 
-
-  <pre>{{ page | json }}</pre>
-
-  <a (click)="doSettingPage()"> OK </a>
+  <button type="submit" class="btn btn-primary" (click)="doSettingPage()">Submit</button>
 </div>

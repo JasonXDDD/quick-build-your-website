@@ -9,19 +9,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-      <a class="navbar-brand" href="#">Start Bootstrap</a>
+      <a class="navbar-brand" href="#">{{ title.value }}</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li>
-          <a href="#">About</a>
-        </li>
-        <li>
-          <a href="#">Services</a>
-        </li>
-        <li>
-          <a href="#">Contact</a>
+        <li *ngFor="let item of navList.value">
+          <a href="{{item.link}}">{{ item.name }}</a>
         </li>
       </ul>
     </div>
@@ -32,42 +26,30 @@
 
 <!-- Full Width Image Header with Logo -->
 <!-- Image backgrounds are set within the full-width-pics.css file. -->
-<header class="image-bg-fluid-height">
-  <img class="img-responsive img-center" src="http://placehold.it/200x200&text=Logo" alt="">
+<header class="image-bg-fluid-height" [ngStyle]="{'background': 'url(' + background.value + ') no-repeat center center fixed'}">
+  <img class="img-responsive img-center" [src]="logo.value" width="500px">
 </header>
 
 <!-- Content Section -->
-<section>
-  <div class="container">
+<section *ngFor="let item of section.value">
+
+  <div class="container" *ngIf="item.type === 'text'">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="section-heading">Section Heading</h1>
-        <p class="lead section-lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        <p class="section-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto
-          commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
+        <h1 class="section-heading">{{ item.heading }}</h1>
+        <p class="lead section-lead">{{ item.lead }}</p>
+        <p class="section-paragraph">{{ item.paragraph }}</p>
       </div>
     </div>
   </div>
-</section>
 
-<!-- Fixed Height Image Aside -->
-<!-- Image backgrounds are set within the full-width-pics.css file. -->
-<aside class="image-bg-fixed-height"></aside>
-
-<!-- Content Section -->
-<section>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <h1 class="section-heading">Section Heading</h1>
-        <p class="lead section-lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        <p class="section-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto
-          commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
-      </div>
-    </div>
-    <!-- /.row -->
-  </div>
-  <!-- /.container -->
+  <aside class="image-bg-fixed-height"
+  [style.backgroundImage]="'url(' + item.src + ')'"
+  [style.backgroundSize]="'cover'"
+  [style.backgroundRepeat]="'no-repeat'"
+  [style.backgroundPosition]="'center center'"
+  [style.backgroundAttachment]="'fixed'"
+  *ngIf="item.type === 'image'"></aside>
 </section>
 
 <!-- Footer -->
@@ -87,9 +69,9 @@
 <!--Control Nav-->
 <div class="control-nav">
   <div>
-    <h2 class="control-title">標題</h2>
+    <h2 class="control-title glyphicon" [ngClass]="{'glyphicon-ok set-ok': title.isSet, 'glyphicon-remove set-no': !title.isSet}">標題</h2>
     <span class="input input--hoshi">
-      <input class="input__field input__field--hoshi" type="text" [(ngModel)]="page.template.module.title"/>
+      <input class="input__field input__field--hoshi" type="text" [(ngModel)]="title.value" (keyup)="checkIsChanged(title)"/>
       <label class="input__label input__label--hoshi input__label--hoshi-color-1">
         <span class="input__label-content input__label-content--hoshi">Title</span>
     </label>
@@ -98,10 +80,21 @@
   <hr>
 
   <div>
-    <h2 class="control-title">內文</h2>
+    <h2 class="control-title glyphicon" [ngClass]="{'glyphicon-ok set-ok': logo.isSet, 'glyphicon-remove set-no': !logo.isSet}">LOGO</h2>
     <span class="input input--hoshi">
-      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="page.template.module.content"/>
+      <input class="input__field input__field--hoshi" type="text" [(ngModel)]="logo.value" (keyup)="checkIsChanged(logo)"/>
       <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+        <span class="input__label-content input__label-content--hoshi">logo</span>
+    </label>
+    </span>
+  </div>
+  <hr>
+
+  <div>
+    <h2 class="control-title glyphicon" [ngClass]="{'glyphicon-ok set-ok': content.isSet, 'glyphicon-remove set-no': !content.isSet}">內文</h2>
+    <span class="input input--hoshi">
+      <textarea class="input__field input__field--hoshi textarea__field" [(ngModel)]="content.value" (keyup)="checkIsChanged(content)"></textarea>
+      <label class="input__label input__label--hoshi input__label--hoshi-color-1 textarea__label">
         <span class="input__label-content input__label-content--hoshi">Content</span>
     </label>
     </span>
@@ -109,25 +102,37 @@
   <hr>
 
 
+  <div>
+    <h2 class="control-title glyphicon" [ngClass]="{'glyphicon-ok set-ok': background.isSet, 'glyphicon-remove set-no': !background.isSet}">背景</h2>
+    <span class="input input--hoshi">
+      <input class="input__field input__field--hoshi" type="text" [(ngModel)]="background.value" (keyup)="checkIsChanged(background)"/>
+      <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+        <span class="input__label-content input__label-content--hoshi">Background</span>
+    </label>
+    </span>
+  </div>
+  <hr>
+
+
   <div style="margin: 50px 0;">
-    <h2 class="control-title">導覽列
+    <h2 class="control-title glyphicon" [ngClass]="{'glyphicon-ok set-ok': navList.isSet, 'glyphicon-remove set-no': !navList.isSet}">導覽列
       <a (click)="pushNav()">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
       </a>
     </h2>
-    <div style="height: 90px;" *ngFor="let item of navList; let i=index">
-      <a class="control-btn-delete" (click)="deleteData(i, navList)">
+    <div style="height: 90px;" *ngFor="let item of navList.value; let i=index">
+      <a class="control-btn-delete" (click)="deleteData(i, navList.value)">
         <span class="glyphicon glyphicon-minus fa-2x"></span>
       </a>
 
       <span class="input input--hoshi" style="width: 100px;">
-      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="item.name"/>
+      <input class="input__field input__field--hoshi" type="text" [(ngModel)]="item.name" (keyup)="checkIsChanged(navList)"/>
       <label class="input__label input__label--hoshi input__label--hoshi-color-1">
         <span class="input__label-content input__label-content--hoshi">Name</span>
       </label>
       </span>
       <span class="input input--hoshi" style="width: 250px;">
-      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="item.link"/>
+      <input class="input__field input__field--hoshi" type="text" [(ngModel)]="item.link" (keyup)="checkIsChanged(navList)"/>
       <label class="input__label input__label--hoshi input__label--hoshi-color-1">
         <span class="input__label-content input__label-content--hoshi">Link</span>
       </label>
@@ -137,36 +142,70 @@
   <hr>
 
   <div style="margin: 50px 0;">
-    <h2 class="control-title">循環背景
-      <a (click)="pushSlide()">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    <h2 class="control-title glyphicon" [ngClass]="{'glyphicon-ok set-ok': section.isSet, 'glyphicon-remove set-no': !section.isSet}">段落
+      <a (click)="pushText()">
+        <span class="glyphicon glyphicon-text-size" aria-hidden="true"></span>
+      </a>
+      <a (click)="pushImage()">
+        <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
       </a>
     </h2>
 
-    <div style="height: 90px;" *ngFor="let item of slide; let i=index">
-      <a class="control-btn-delete" (click)="deleteData(i, slide)">
-        <span class="glyphicon glyphicon-minus fa-2x"></span>
-      </a>
+    <div style="min-height: 90px;" *ngFor="let item of section.value; let i=index">
 
-      <span class="input input--hoshi" style="width: 250px;">
-      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="item.src"/>
-      <label class="input__label input__label--hoshi input__label--hoshi-color-1">
-        <span class="input__label-content input__label-content--hoshi">Src</span>
-      </label>
-      </span>
-      <span class="input input--hoshi" style="width: 100px;">
-      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="item.content"/>
-      <label class="input__label input__label--hoshi input__label--hoshi-color-1">
-        <span class="input__label-content input__label-content--hoshi">Content</span>
-      </label>
-      </span>
+
+
+      <div *ngIf="item.type === 'image'">
+        <h3 style="line-height: 1; margin: 0; height: 50px;">
+          <a class="control-btn-delete" (click)="deleteData(i, section.value); checkIsChanged(section)">
+            <span class="glyphicon glyphicon-minus fa-1x"></span>
+          </a>
+          Section Image
+        </h3>
+        <span class="input input--hoshi">
+          <input class="input__field input__field--hoshi" type="text" [(ngModel)]="item.src" (keyup)="checkIsChanged(section)"/>
+          <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+            <span class="input__label-content input__label-content--hoshi">Background Src</span>
+        </label>
+        </span>
+        <hr>
+      </div>
+
+      <div *ngIf="item.type === 'text'">
+        <h3 style="line-height: 1; margin: 0; height: 60px;">
+          <a class="control-btn-delete" (click)="deleteData(i, section.value); checkIsChanged(section)">
+            <span class="glyphicon glyphicon-minus fa-1x"></span>
+          </a>
+          Section Text
+        </h3>
+        <span class="input input--hoshi">
+          <input class="input__field input__field--hoshi" type="text" [(ngModel)]="item.heading" (keyup)="checkIsChanged(section)"/>
+          <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+            <span class="input__label-content input__label-content--hoshi">Section Title</span>
+        </label>
+        </span>
+        <span class="input input--hoshi">
+          <input class="input__field input__field--hoshi" type="text" [(ngModel)]="item.lead" (keyup)="checkIsChanged(section)"/>
+          <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+            <span class="input__label-content input__label-content--hoshi">Section Lead</span>
+        </label>
+        </span>
+        <span class="input input--hoshi">
+          <input class="input__field input__field--hoshi" type="text" [(ngModel)]="item.paragraph" (keyup)="checkIsChanged(section)"/>
+          <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+            <span class="input__label-content input__label-content--hoshi">Section Paragraph</span>
+        </label>
+        </span>
+        <hr>
+      </div>
+
 
     </div>
   </div>
   <hr>
-  <pre>{{ page | json }}</pre>
 
-  <a (onclick)="doSettingPage()" [routerLink]="['/pages']">
-    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-  </a>
+  <pre>
+  {{ page | json }}
+  </pre>
+  <button type="submit" class="btn btn-primary" (click)="doSettingPage()">Submit</button>
 </div>

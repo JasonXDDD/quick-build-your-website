@@ -24,7 +24,6 @@ footer {
     margin: 50px 0;
 }
 
-
 /*********
  control nav
 ***********/
@@ -35,16 +34,16 @@ footer {
   position: fixed;
   top: 0;
   right: 0;
-  background-color: rgba(150, 240, 255, .5);
+  background-color: rgba(255, 255, 255, .5);
   z-index: 2000;
   overflow: scroll;
-  box-shadow: -5px 0 4px rgba(0, 110, 150, .5);
+  box-shadow: -5px 0 4px rgba(100, 110, 150, .5);
 }
 
 .control-title{
   margin: 0;
   text-align: center;
-  color: rgb(100, 30, 50)
+  color: rgb(0, 30, 50)
 }
 
 .control-btn-delete{
@@ -56,3 +55,4 @@ footer {
 .control-btn-delete:hover{
     color: rgb(100, 0, 0)
 }
+

@@ -73,6 +73,11 @@ textfield style
 	color: #595F6E;
 }
 
+.textarea__field{
+  height: 7em;
+  padding-top: 4em;
+}
+
 .input__label--hoshi {
 	position: absolute;
 	bottom: 0;
@@ -97,6 +102,11 @@ textfield style
 	width: 100%;
 	height: calc(100% - 10px);
 	border-bottom: 1px solid #B9C1CA;
+}
+
+.textarea__label{
+	height: 100%;
+  padding-top: 1em;
 }
 
 .input__label--hoshi::after {
@@ -131,6 +141,9 @@ textfield style
 	-webkit-animation: anim-1 0.3s forwards;
 	animation: anim-1 0.3s forwards;
 }
+
+
+
 
 @-webkit-keyframes anim-1 {
 	50% {

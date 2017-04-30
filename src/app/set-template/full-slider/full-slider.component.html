@@ -9,12 +9,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-      <a class="navbar-brand" href="#">{{ page.template.module.title }}</a>
+      <a class="navbar-brand" href="#">{{ title.value }}</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li *ngFor="let item of navList">
+        <li *ngFor="let item of navList.value">
           <a href="{{item.link}}">{{ item.name }}</a>
         </li>
       </ul>
@@ -28,12 +28,12 @@
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#myCarousel"
-      *ngFor="let item of slide; let first=first; let i=index"
+      *ngFor="let item of slide.value; let first=first; let i=index"
       [attr.data-slide-to]="i" [ngClass]="{active: first}"></li>
   </ol>
   <!-- Wrapper for Slides -->
   <div class="carousel-inner">
-    <div class="item" [ngClass]="{active: first}" *ngFor="let item of slide; let first=first">
+    <div class="item" [ngClass]="{active: first}" *ngFor="let item of slide.value; let first=first">
       <!-- Set the first background image using inline CSS below. -->
       <div class="fill" [ngStyle]="{'backgroundImage': 'url(' + item.src + ')'}"></div>
       <div class="carousel-caption">
@@ -54,8 +54,8 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1>{{ page.template.module.title }}</h1>
-      <p>{{ page.template.module.content }}</p>
+      <h1>{{ title.value }}</h1>
+      <p>{{ content.value }}</p>
     </div>
   </div>
   <hr>
@@ -74,9 +74,10 @@
 <!--Control Nav-->
 <div class="control-nav">
   <div>
-    <h2 class="control-title">標題</h2>
+    <h2 class="control-title glyphicon"
+    [ngClass]="{'glyphicon-ok set-ok': title.isSet, 'glyphicon-remove set-no': !title.isSet}">標題</h2>
     <span class="input input--hoshi">
-      <input class="input__field input__field--hoshi" type="text" [(ngModel)]="page.template.module.title"/>
+      <input class="input__field input__field--hoshi" type="text" [(ngModel)]="title.value" (keyup)="checkIsChanged(title)"/>
       <label class="input__label input__label--hoshi input__label--hoshi-color-1">
         <span class="input__label-content input__label-content--hoshi">Title</span>
     </label>
@@ -85,10 +86,11 @@
   <hr>
 
   <div>
-    <h2 class="control-title">內文</h2>
+    <h2 class="control-title glyphicon"
+    [ngClass]="{'glyphicon-ok set-ok': content.isSet, 'glyphicon-remove set-no': !content.isSet}">內文</h2>
     <span class="input input--hoshi">
-      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="page.template.module.content"/>
-      <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+      <textarea class="input__field input__field--hoshi textarea__field" [(ngModel)]="content.value" (keyup)="checkIsChanged(content)"></textarea>
+      <label class="input__label input__label--hoshi input__label--hoshi-color-1 textarea__label">
         <span class="input__label-content input__label-content--hoshi">Content</span>
     </label>
     </span>
@@ -97,24 +99,25 @@
 
 
   <div style="margin: 50px 0;">
-    <h2 class="control-title">導覽列
+    <h2 class="control-title glyphicon"
+    [ngClass]="{'glyphicon-ok set-ok': navList.isSet, 'glyphicon-remove set-no': !navList.isSet}">導覽列
       <a (click)="pushNav()">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
       </a>
     </h2>
-    <div style="height: 90px;" *ngFor="let item of navList; let i=index">
-      <a class="control-btn-delete" (click)="deleteData(i, navList)">
+    <div style="height: 90px;" *ngFor="let item of navList.value; let i=index">
+      <a class="control-btn-delete" (click)="deleteData(i, navList.value)">
         <span class="glyphicon glyphicon-minus fa-2x"></span>
       </a>
 
       <span class="input input--hoshi" style="width: 100px;">
-      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="item.name"/>
+      <input class="input__field input__field--hoshi" type="text" [(ngModel)]="item.name" (keyup)="checkIsChanged(navList)"/>
       <label class="input__label input__label--hoshi input__label--hoshi-color-1">
         <span class="input__label-content input__label-content--hoshi">Name</span>
       </label>
       </span>
       <span class="input input--hoshi" style="width: 250px;">
-      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="item.link"/>
+      <input class="input__field input__field--hoshi" type="text" [(ngModel)]="item.link" (keyup)="checkIsChanged(navList)"/>
       <label class="input__label input__label--hoshi input__label--hoshi-color-1">
         <span class="input__label-content input__label-content--hoshi">Link</span>
       </label>
@@ -124,25 +127,26 @@
   <hr>
 
   <div style="margin: 50px 0;">
-    <h2 class="control-title">循環背景
+    <h2 class="control-title glyphicon"
+    [ngClass]="{'glyphicon-ok set-ok': slide.isSet, 'glyphicon-remove set-no': !slide.isSet}">循環背景
       <a (click)="pushSlide()">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
       </a>
     </h2>
 
-    <div style="height: 90px;" *ngFor="let item of slide; let i=index">
-      <a class="control-btn-delete" (click)="deleteData(i, slide)">
+    <div style="height: 90px;" *ngFor="let item of slide.value; let i=index">
+      <a class="control-btn-delete" (click)="deleteData(i, slide.value)">
         <span class="glyphicon glyphicon-minus fa-2x"></span>
       </a>
 
       <span class="input input--hoshi" style="width: 250px;">
-      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="item.src"/>
+      <input class="input__field input__field--hoshi" type="text" [(ngModel)]="item.src" (keyup)="checkIsChanged(slide)"/>
       <label class="input__label input__label--hoshi input__label--hoshi-color-1">
         <span class="input__label-content input__label-content--hoshi">Src</span>
       </label>
       </span>
       <span class="input input--hoshi" style="width: 100px;">
-      <input class="input__field input__field--hoshi" type="textarea" [(ngModel)]="item.content"/>
+      <input class="input__field input__field--hoshi" type="text" [(ngModel)]="item.content" (keyup)="checkIsChanged(slide)"/>
       <label class="input__label input__label--hoshi input__label--hoshi-color-1">
         <span class="input__label-content input__label-content--hoshi">Content</span>
       </label>
@@ -151,9 +155,6 @@
     </div>
   </div>
   <hr>
-  <pre>{{ page | json }}</pre>
 
-  <a (onclick)="doSettingPage()" [routerLink]="['/pages']">
-    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-  </a>
+  <button type="submit" class="btn btn-primary" (click)="doSettingPage()">Submit</button>
 </div>

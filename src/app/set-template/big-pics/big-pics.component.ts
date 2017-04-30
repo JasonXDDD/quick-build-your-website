@@ -10,18 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BigPicsComponent implements OnInit {
   user: any;
-  templateList: any;
+  template: any;
 
   page: any;
-  navList: any;
   module: any;
+  navList: any;
   title: any;
   content: any;
   background: any;
 
   constructor(private http: Http, private router: Router) {
     this.user = sessionStorage.getItem("user");
-    this.templateList = sessionStorage.getItem("templateList");
+    var templateList = JSON.parse(sessionStorage.getItem("templateList"));
+    this.template = templateList.find(item =>{
+      return item.name === "Big Pics"
+    })
   }
 
   ngOnInit() {
@@ -35,9 +38,6 @@ export class BigPicsComponent implements OnInit {
         case 'navList': this.navList = element;
       }
     });
-
-    console.log('yoo')
-    console.log(this.navList);
   }
 
   doSettingPage(){
@@ -51,15 +51,12 @@ export class BigPicsComponent implements OnInit {
       .subscribe(result =>{
         console.log(result.json());
         sessionStorage.setItem('pageSetting', JSON.stringify(this.page));
-
         this.router.navigate(['/pages']);
       })
-
-
   }
 
   pushNav(){
-    this.navList.push({
+    this.navList.value.push({
       name: "連結",
       link: "/setting/big-pics"
     })
@@ -70,5 +67,13 @@ export class BigPicsComponent implements OnInit {
       target.splice(index, 1);
     else
       alert("must have one!!");
+  }
+
+  checkIsChanged(target){
+    var template_Target = this.template.module.find(item => {
+      return item.key === target.key;
+    })
+    if(JSON.stringify(target.value) === JSON.stringify(template_Target.value)) target.isSet = 0;
+    else target.isSet = 1;
   }
 }
