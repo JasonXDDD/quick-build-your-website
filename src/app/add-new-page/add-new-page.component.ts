@@ -51,4 +51,9 @@ export class AddNewPageComponent implements OnInit {
 
   }
 
+  addActive(event){
+    $('.template-name').removeClass('add-active');
+    $(event.target).parent('a').addClass('add-active');
+  }
+
 }

@@ -37,10 +37,10 @@ export class FullSliderComponent implements OnInit {
     this.module = this.page.template.module;
     this.module.forEach(element => {
       switch(element.key){
-        case 'title': this.title = element;
-        case 'content': this.content = element;
-        case 'slide': this.slide = element;
-        case 'navList': this.navList = element;
+        case 'title': this.title = element; break;
+        case 'content': this.content = element; break;
+        case 'slide': this.slide = element; break;
+        case 'navList': this.navList = element; break;
       }
     });
   }

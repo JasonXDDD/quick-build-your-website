@@ -5,17 +5,17 @@
 
     <h2 class="pricing-section__title">選擇，點選你要修改的網頁</h2>
     <div class="row fn-list">
-      <div class="col-sm-4"><a [routerLink]="['/addPage']"><span class="fa-4x glyphicon glyphicon-plus" aria-hidden="true"></span></a></div>
-      <div class="col-sm-4"><a href=""><span class="fa-4x glyphicon glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></a></div>
-      <div class="col-sm-4"><a href=""><span class="fa-4x glyphicon glyphicon-remove" aria-hidden="true"></span></a></div>
+      <div class="col-sm-3"><a [routerLink]="['/dashboard']"><span class="fa-4x ti-shift-left" aria-hidden="true"></span></a></div>
+      <div class="col-sm-3"><a [routerLink]="['/addPage']"><span class="fa-4x ti-plus" aria-hidden="true"></span></a></div>
+      <div class="col-sm-3"><a href=""><span class="fa-4x ti-settings" aria-hidden="true"></span></a></div>
+      <div class="col-sm-3"><a href=""><span class="fa-4x ti-cloud-up" aria-hidden="true"></span></a></div>
     </div>
 
 
-    <div class="pricing pricing--sonam">
+    <div class="pricing pricing--sonam" style="margin-top: 1em">
         <app-page-item *ngFor="let page of pageList" [page]="page" [user]="user"></app-page-item>
     </div>
 
-    <pre>{{ pageList | json }}</pre>
 
   </section>
 </div>

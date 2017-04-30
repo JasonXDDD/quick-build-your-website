@@ -12,3 +12,24 @@ pre {
   font-size: 20px;
   font-weight: 500
 }
+
+.template-name {
+  display: inline-block;
+  width: 300px;
+  padding: 1em .5em;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  font-size: 2em;
+}
+
+.finish-add{
+  font-size: 2em;
+  margin-top: 3em;
+}
+
+.add-active{
+  background-color: #efc75e;
+  color: #920b00;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}

@@ -33,12 +33,12 @@ export class FullWidthPicsComponent implements OnInit {
     this.module = this.page.template.module;
     this.module.forEach(element => {
       switch (element.key) {
-        case 'title': this.title = element;
-        case 'content': this.content = element;
-        case 'logo': this.logo = element;
-        case 'background': this.background = element;
-        case 'navList': this.navList = element;
-        case 'section': this.section = element;
+        case 'title': this.title = element; break;
+        case 'background': this.background = element; break;
+        case 'content': this.content = element; break;
+        case 'logo': this.logo = element; break;
+        case 'navList': this.navList = element; break;
+        case 'section': this.section = element; break;
       }
     });
   }

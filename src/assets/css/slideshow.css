@@ -87,15 +87,15 @@ body,
 }
 
 .xd-slideshow ul li:nth-child(2) > svg {
-	fill: #358ebc;
+	fill: #a8e1ff;
 }
 
 .xd-slideshow ul li:nth-child(3) > svg {
-	fill: #F36A71;
+	fill: #faa4a9;
 }
 
 .xd-slideshow ul li:nth-child(4) > svg {
-	fill: #9D9E94;
+	fill: #fff19f;
 }
 
 .xd-slideshow ul li:nth-child(6) > svg {

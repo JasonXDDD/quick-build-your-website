@@ -1,4 +1,9 @@
-<div class="full" [ngStyle]="{background: 'url(' + background.value + ') no-repeat center center fixed'}">
+<div class="full"
+  [style.backgroundImage]="'url(' + background.value + ')'"
+  [style.backgroundSize]="'cover'"
+  [style.backgroundRepeat]="'no-repeat'"
+  [style.backgroundPosition]="'center center'"
+  [style.backgroundAttachment]="'fixed'">
   <div class="show">
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">

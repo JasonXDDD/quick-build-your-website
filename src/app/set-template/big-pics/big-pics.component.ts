@@ -32,10 +32,10 @@ export class BigPicsComponent implements OnInit {
     this.module = this.page.template.module;
     this.module.forEach(element => {
       switch(element.key){
-        case 'title': this.title = element;
-        case 'content': this.content = element;
-        case 'background': this.background = element;
-        case 'navList': this.navList = element;
+        case 'title': this.title = element; break;
+        case 'content': this.content = element; break;
+        case 'background': this.background = element; break;
+        case 'navList': this.navList = element; break;
       }
     });
   }

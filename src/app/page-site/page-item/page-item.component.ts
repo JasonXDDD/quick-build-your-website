@@ -33,4 +33,16 @@ export class PageItemComponent implements OnInit {
         this.router.navigate([this.page.template.route]);
       })
   }
+
+  doRemovePage(){
+    let headers = new Headers({
+      'Authorization': this.user.token
+    });
+    let options = new RequestOptions({ headers: headers });
+
+    this.http.delete('http://huangserver.ddns.net:3031/pages/' + this.page.page_id, options)
+      .subscribe(result =>{
+        location.reload();
+      })
+  }
 }

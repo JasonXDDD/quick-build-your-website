@@ -1,5 +1,7 @@
 <div class="pricing__item">
+  <a class="item-remove" (click)="doRemovePage()"><i class="ti-close"></i></a>
   <h3 class="pricing__title">{{ page.page_title }}</h3>
+
   <div class="pricing__price">
     <img [src]="'/assets/img/template/' + page.template.name + '.png'" height="200px">
   </div>

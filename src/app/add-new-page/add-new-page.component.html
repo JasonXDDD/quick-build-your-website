@@ -8,13 +8,12 @@
 
 
           <span class="input input--hoshi">
-							<input class="input__field input__field--hoshi" type="text" id="input-4" [(ngModel)]="page.page_title"/>
+							<input class="input__field input__field--hoshi" type="text" id="input-4" [(ngModel)]="page.page_title" required/>
 							<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
 								<span class="input__label-content input__label-content--hoshi">Name</span>
           </label>
           </span>
 
-          <pre>{{ page | json }}</pre>
         </div>
       </li>
       <li>
@@ -22,10 +21,11 @@
           <img class="icon" src="assets/img/icons/heart.svg" alt="Heart Icon" />
           <h1>選擇你的樣板:</h1>
           <div>
-            <a (click)="page.template=temp.name" style="padding: 0 2em;" *ngFor="let temp of templateList">{{ temp.name }}</a>
-
+            <a class="template-name" (click)="page.template=temp.name; addActive($event)" *ngFor="let temp of templateList">
+              <img [src]="'/assets/img/template/' + temp.name + '.png'" height="200px">
+              {{ temp.name }}
+              </a>
           </div>
-          <pre>{{ page | json }}</pre>
         </div>
       </li>
       <li>
@@ -34,7 +34,6 @@
           <h1>給個漂亮的風格吧:</h1>
 
 
-          <pre>{{ page | json }}</pre>
         </div>
       </li>
       <li>
@@ -43,8 +42,7 @@
           <h1>恭喜你!!，完成你的網頁設定</h1>
           <h1>可以到設定進行網頁內容編輯喔XD</h1>
 
-          <a (click)="sendNewPage()">go back</a>
-          <pre>{{ page | json }}</pre>
+          <button type="submit" class="btn btn-info finish-add" (click)="sendNewPage()">Go Back to Setting Page</button>
         </div>
       </li>
     </ul>
