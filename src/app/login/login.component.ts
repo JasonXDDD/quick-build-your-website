@@ -25,6 +25,13 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.viewInit();
 
+    // if(1!==1){
+    //   this.router.navigate(['/dashboard'])
+    // }
+    // else {
+    //   sessionStorage.clear();
+    // }
+
   }
 
   viewInit() {
