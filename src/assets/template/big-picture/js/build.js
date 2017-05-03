@@ -1,51 +1,91 @@
-
-
-
-
 function init(page) {
-    var head = `
-<!DOCTYPE html>
-<html class="full" lang="en">
-<!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
+  var module = page.template.module;
+  var title, content, background, navList;
 
-<head>
+  module.forEach(element => {
+    switch(element.key){
+      case 'title': title = element.value; break;
+      case 'content': content = element.value; break;
+      case 'background': background = element.value; break;
+      case 'navList': navList = element.value; break;
+    }
+  });
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  return genFile(title, content, background, navList)
+}
 
-    <title>` + page.page_title + `</title>
+function genFile(title, content, background, navList) {
+  return genHTML(title, genBackground(background, genNav(title, navList) + genContent(title, content)));
+}
 
-    <!-- Bootstrap Core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+function genHTML(title, after) {
+  var data = `
+  <!DOCTYPE html>
+  <html lang="en">
+  <!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
 
-    <!-- Custom CSS -->
-    <link href="assets/css/the-big-picture.css" rel="stylesheet">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+      <title>` + title + `</title>
 
-</head>
-    `;
+      <!-- Bootstrap Core CSS -->
+      <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
-    genNav("XDDD", [{ name: "XDD", link: "/yooo" }, { name: "QQ", link: "/ddddd" }])
+      <!-- Custom CSS -->
+      <link href="assets/css/the-big-picture.css" rel="stylesheet">
+
+      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+      <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
+  </head>
+  <body>
+      `
+  data += after;
+  data += `
+      <!-- jQuery -->
+      <script src="assets/js/jquery.js"></script>
+      <!-- Bootstrap Core JavaScript -->
+      <script src="assets/js/bootstrap.min.js"></script>
+  </body>
+
+  </html>
+  `
+
+  return data;
+}
+
+function genBackground(background, after) {
+  var data = `
+    <div class="full" style="background:url(` + background + `) no-repeat center center fixed; background-size: cover;">
+      <div class="show">
+  `
+  data += after;
+  data += `
+      </div>
+    </div>
+  `
+
+  return data;
 }
 
 function genNav(title, navList) {
-    function genNavItem(list) {
-        var data = '';
-        list.forEach(function (element) {
-            data += `<li><a href="` + element.link + `">` + element.name + `</a></li>`
-        });
-        return data;
-    }
-    var data = `
+  function genNavItem(list) {
+    var data = '';
+    list.forEach(function (element) {
+      data += `<li><a href="` + element.link + `">` + element.name + `</a></li>`
+    });
+    return data;
+  }
+  var data = `
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
         <div class="container">
@@ -57,24 +97,24 @@ function genNav(title, navList) {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">`+ title + `</a>
+                <a class="navbar-brand" href="#">` + title + `</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">`
-        + genNavItem(navList) +
-        `</ul>
+               <ul class="nav navbar-nav">` +
+    genNavItem(navList) +
+    `</ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
     `
-    return data;
+  return data;
 }
 
-function genContent() {
-    var data = `
+function genContent(title, content) {
+  var data = `
     <!-- Page Content -->
     <div class="container">
         <div class="row">
@@ -88,5 +128,5 @@ function genContent() {
     <!-- /.container -->
     `
 
-    return data;
+  return data;
 }
