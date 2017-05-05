@@ -27,7 +27,7 @@
 <!-- Full Width Image Header with Logo -->
 <!-- Image backgrounds are set within the full-width-pics.css file. -->
 <header class="image-bg-fluid-height" [ngStyle]="{'background': 'url(' + background.value + ') no-repeat center center fixed'}">
-  <img class="img-responsive img-center" [src]="logo.value" width="500px">
+  <img class="img-responsive img-center logo-img" [src]="logo.value" width="300px">
 </header>
 
 <!-- Content Section -->
@@ -38,7 +38,7 @@
       <div class="col-lg-12">
         <h1 class="section-heading">{{ item.heading }}</h1>
         <p class="lead section-lead">{{ item.lead }}</p>
-        <p class="section-paragraph">{{ item.paragraph }}</p>
+        <p class="section-paragraph" style=" white-space: pre-line">{{ item.paragraph }}</p>
       </div>
     </div>
   </div>
@@ -190,9 +190,10 @@
             <span class="input__label-content input__label-content--hoshi">Section Lead</span>
         </label>
         </span>
+
         <span class="input input--hoshi">
-          <input class="input__field input__field--hoshi" type="text" [(ngModel)]="item.paragraph" (keyup)="checkIsChanged(section)"/>
-          <label class="input__label input__label--hoshi input__label--hoshi-color-1">
+          <textarea class="input__field input__field--hoshi textarea__field" [(ngModel)]="item.paragraph" (keyup)="checkIsChanged(section)"></textarea>
+          <label class="input__label input__label--hoshi input__label--hoshi-color-1 textarea__label">
             <span class="input__label-content input__label-content--hoshi">Section Paragraph</span>
         </label>
         </span>
