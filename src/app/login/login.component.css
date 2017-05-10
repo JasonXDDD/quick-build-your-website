@@ -7,6 +7,23 @@
 
 /* Background */
 
+.bg-slide{
+  height: 100%;
+  width: 100%;
+}
+.bg-slide-img-1{
+  background: url('/assets/img/blackboard.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+.bg-slide-img-2{
+  background: url('/assets/img/main/1.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+.bg-slide-img-3{
+  background: url('/assets/img/main/2.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
 .bg {
   height: 100%;
   width: 100%;
@@ -16,10 +33,10 @@
 
 .bg-webview {
   background: url('/assets/img/bg.png') no-repeat center center fixed;
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  background-size: contain;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .errors-container {
