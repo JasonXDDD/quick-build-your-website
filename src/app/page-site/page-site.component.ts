@@ -55,23 +55,22 @@ export class PageSiteComponent implements OnInit {
       'Authorization': this.user.token,
       'Content-Type': 'application/json'
     });
-    console.log(JSON.stringify({
-      project_name: this.project.name,
-      project_id: this.project.project_id
-    }))
+
     let options = new RequestOptions({ headers: headers });
     this.http.post('http://huangserver.ddns.net:3031/build', JSON.stringify({
       project_name: this.project.name,
       project_id: this.project.project_id
     }), options)
       .subscribe(result =>{
-        this.downloadFile(result);
+        this.downloadFile(result)
       })
   }
 
   downloadFile(data){
-    var blob = new Blob([data._body], { type: 'application/zip' });
-    saveAs(blob, 'Download.zip');
+    var body = JSON.parse(data._body)
+    var url = body.downloadURL;
+    window.open(url);
+    // saveAs(blob, 'Download.zip');
   }
 
 

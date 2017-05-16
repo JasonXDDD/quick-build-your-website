@@ -119,8 +119,8 @@ function genContent(title, content) {
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-sm-12">
-                <h1>` + title + `e</h1>
-                <p>` + content + `</p>
+                <h1 style="color: white; text-shadow: 1px 3px 5px #555">` + title + `e</h1>
+                <p style="font-size: 20px; color: white; text-shadow: 1px 3px 5px #555; white-space: pre-line">` + content + `</p>
             </div>
         </div>
         <!-- /.row -->
