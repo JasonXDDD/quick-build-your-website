@@ -7,9 +7,9 @@
 
   <div class="sidebar-wrapper">
     <div class="logo">
-      <a href="#" class="simple-text">
-                    JasonXDDD
-                </a>
+      <img [src]="user.data.profile_img" width="150px" style="display:block; margin: 0 auto; ">
+      <a class="simple-text">{{ user.data.name }}</a>
+      <a class="simple-text" (click)="doLogOut()" style="font-size: 0.8em;"> LogOut </a>
     </div>
 
     <ul class="nav">

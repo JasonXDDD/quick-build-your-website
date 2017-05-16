@@ -60,12 +60,6 @@
     </form>
   </div>
 
-
-
-
-
-
-
   <div class="card alt">
     <div class="toggle"></div>
     <h1 class="title">Register
@@ -73,6 +67,18 @@
     </h1>
     <form ngForm>
     <!-- register user information -->
+
+    <div class="input-container">
+      <input type="text" #userName="ngModel" required name="name" [(ngModel)]="user.name"/>
+      <label for="Name">Name</label>
+      <div class="bar"></div>
+    </div>
+    <div class="errors-container">
+      <div class="errors-alt" *ngIf="userName.errors">
+        <p *ngIf="userName.errors.required">required</p>
+      </div>
+    </div>
+
     <div class="input-container">
       <input type="text" #userEmail="ngModel" required name="email" [(ngModel)]="user.email"
       pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"/>

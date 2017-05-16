@@ -1,6 +1,7 @@
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import 'rxjs/Rx';
 
 @Component({
   selector: 'app-page-site',
@@ -46,6 +47,31 @@ export class PageSiteComponent implements OnInit {
         console.log(result.json());
         this.pageList = result.json();
       })
+  }
+
+
+  doBuildProject(){
+    let headers = new Headers({
+      'Authorization': this.user.token,
+      'Content-Type': 'application/json'
+    });
+    console.log(JSON.stringify({
+      project_name: this.project.name,
+      project_id: this.project.project_id
+    }))
+    let options = new RequestOptions({ headers: headers });
+    this.http.post('http://huangserver.ddns.net:3031/build', JSON.stringify({
+      project_name: this.project.name,
+      project_id: this.project.project_id
+    }), options)
+      .subscribe(result =>{
+        this.downloadFile(result);
+      })
+  }
+
+  downloadFile(data){
+    var blob = new Blob([data._body], { type: 'application/zip' });
+    saveAs(blob, 'Download.zip');
   }
 
 

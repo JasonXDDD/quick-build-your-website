@@ -18,19 +18,20 @@ export class LoginComponent implements OnInit {
   constructor(private http: Http, private router: Router) {
     this.user = {
       email: "",
-      password: ""
+      password: "",
+      name: ""
     }
   }
 
   ngOnInit() {
     this.viewInit();
 
-    // if(1!==1){
-    //   this.router.navigate(['/dashboard'])
-    // }
-    // else {
-    //   sessionStorage.clear();
-    // }
+    if(sessionStorage.getItem("user")){
+      this.router.navigate(['/dashboard'])
+    }
+    else {
+      sessionStorage.clear();
+    }
 
   }
 

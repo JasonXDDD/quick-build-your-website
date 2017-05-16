@@ -34,7 +34,7 @@ export class ProjectComponent implements OnInit {
     });
     let options = new RequestOptions({ headers: headers });
 
-    this.http.get('http://huangserver.ddns.net:3031/projects', options)
+    this.http.get('http://huangserver.ddns.net:3031/projects?user_id=' + this.user.data.user_id, options)
       .subscribe(result => {
         this.projectList = result.json();
         sessionStorage.setItem("projectList", JSON.stringify(this.projectList));

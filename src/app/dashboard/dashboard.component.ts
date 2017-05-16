@@ -10,7 +10,7 @@ export class DashboardComponent implements OnInit {
   user: any;
 
   constructor(private router: Router) {
-    this.user = sessionStorage.getItem('user');
+    this.user = JSON.parse(sessionStorage.getItem('user'))
     if(this.user === null){
       this.router.navigate(['/login']);
     }
@@ -19,6 +19,11 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  doLogOut(){
+    sessionStorage.clear();
+    this.router.navigate(['/login']);
   }
 
 
